@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaShoppingCart } from "react-icons/fa";
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -13,6 +14,16 @@ export const logo = (
 const activeLink = ({isActive}) => (isActive ? `${styles.active}` : "")
 
 const Header = () => {
+
+    const cart = (
+        <span className={styles.cart}>
+            <Link to="/cart">
+                Cart
+                <FaShoppingCart size={20}/>
+            </Link>
+        </span>
+    )
+
   return (
   <header>
     <div className={styles.header}>{logo}
@@ -36,6 +47,7 @@ const Header = () => {
                     My Order
                 </NavLink>
             </span>
+            {cart}
         </div>
     </nav>
     </div>
