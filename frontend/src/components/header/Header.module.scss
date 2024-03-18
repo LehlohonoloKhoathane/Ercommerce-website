@@ -8,8 +8,8 @@
 
 header {
   width: 100%;
-  background-color: var(--dark-blue);
-  color: #fff;
+  background-color: lightblue;
+  color: green;
 
   .header {
     width: 100%;
@@ -48,7 +48,7 @@ header {
       li {
         margin: 0 5px;
         a {
-          color: #fff;
+          color: green;
           &:hover {
             color: orangered;
           }
@@ -62,7 +62,7 @@ header {
 
     .cart a {
       display: flex;
-      color: #fff;
+      color: green;
       position: relative;
       &:hover {
         color: orangered;
@@ -82,13 +82,13 @@ header {
       margin: 0 5px;
 
       p {
-        color: #fff;
+        color: green;
       }
     }
 
     .links a {
       margin: 0 5px;
-      color: #fff;
+      color: green;
       &:hover {
         color: orangered;
       }
@@ -154,18 +154,18 @@ header {
       .header-right {
         display: block;
         .cart {
-          // display: block;
-          // padding: 5px 0;
+           display: block;
+           padding: 5px 0;
           border-bottom: 1px solid #333;
-          // a {
-          //   position: relative;
-          //   p {
-          //     position: absolute;
-          //     top: -1rem;
-          //     left: 5rem;
-          //     font-weight: 500;
-          //   }
-          // }
+           a {
+             position: relative;
+             p {
+               position: absolute;
+               top: -1rem;
+               left: 5rem;
+               font-weight: 500;
+             }
+           }
         }
 
         .links {
@@ -182,7 +182,7 @@ header {
     .cart {
       display: block;
       padding: 5px 0;
-      // border-bottom: 1px solid #333;
+       border-bottom: 1px solid #333;
       a {
         color: #fff;
         position: relative;
