@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 import { CgMenuGridR } from "react-icons/cg";
+import { FaTimes } from "react-icons/fa";
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -38,9 +39,14 @@ const Header = () => {
   return (
   <header>
     <div className={styles.header}>{logo}
-    <nav className={showMenu ? `${styles["show-menu"]}` : `${styles["hide-menu"]}`}>
-        <div className={showMenu ? `${styles["nav-wrapper"]}` : `${styles["hide-menu"]}`}></div> 
+    <nav className={showMenu ? `${styles["show-nav"]}` : `${styles["hide-menu"]}`}>
+        <div className={showMenu ? `${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}` :
+         `${styles["hide-nav"]}`} onClick={hideMenu}></div> 
         <ul>
+            <li className={styles["logo-mobile"]}>
+                {logo}
+                <FaTimes size={22} color='fff' onClick={hideMenu}/>
+            </li>
             <li>
                 <NavLink to="/shop" className={activeLink}>
                 Shop
