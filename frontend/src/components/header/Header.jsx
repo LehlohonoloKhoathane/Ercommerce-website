@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FaShoppingCart } from "react-icons/fa";
+import { CgMenuGridR } from "react-icons/cg";
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -15,6 +16,16 @@ const activeLink = ({isActive}) => (isActive ? `${styles.active}` : "")
 
 const Header = () => {
 
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu)
+    };
+
+    const hideMenu = () => {
+        setShowMenu(false)
+    };
+
     const cart = (
         <span className={styles.cart}>
             <Link to="/cart">
@@ -22,12 +33,13 @@ const Header = () => {
                 <FaShoppingCart size={20}/>
             </Link>
         </span>
-    )
+    );
 
   return (
   <header>
     <div className={styles.header}>{logo}
-    <nav>
+    <nav className={showMenu ? `${styles["show-menu"]}` : `${styles["hide-menu"]}`}>
+        <div className={showMenu ? `${styles["nav-wrapper"]}` : `${styles["hide-menu"]}`}></div> 
         <ul>
             <li>
                 <NavLink to="/shop" className={activeLink}>
@@ -50,6 +62,12 @@ const Header = () => {
             {cart}
         </div>
     </nav>
+
+    <div className={styles["menu-icon"]}>
+        {cart}
+        <CgMenuGridR size={28} onClick={toggleMenu}/>
+    </div>
+
     </div>
     </header>
   );

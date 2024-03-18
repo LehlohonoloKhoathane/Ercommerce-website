@@ -215,7 +215,7 @@ header {
 
 .active {
   position: relative;
-  color: var(--color-danger);
+  color: red;
 }
 
 .active::after {
