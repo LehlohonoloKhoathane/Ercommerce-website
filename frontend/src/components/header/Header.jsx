@@ -1,10 +1,12 @@
+// Importing necessary modules
 import React, {useState} from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 import { CgMenuGridR } from "react-icons/cg";
 import { FaTimes } from "react-icons/fa";
-import styles from './Header.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import styles from './Header.module.scss';     // Importing styles from a SCSS module
+import { Link, NavLink } from 'react-router-dom';    // Importing Link and NavLink components from react-router-dom
 
+// Define a logo component
 export const logo = (
     <div className={styles.logo}>
         <Link to="/">
@@ -13,20 +15,26 @@ export const logo = (
     </div>
 );
 
+// Define a function to determine the active link class
 const activeLink = ({isActive}) => (isActive ? `${styles.active}` : "")
 
+// Header component
 const Header = () => {
 
+    // State to toggle the mobile menu
     const [showMenu, setShowMenu] = useState(false);
 
+    // Function to toggle the mobile menu
     const toggleMenu = () => {
         setShowMenu(!showMenu)
     };
 
+    // Function to hide the mobile menu
     const hideMenu = () => {
         setShowMenu(false)
     };
 
+    // Cart component
     const cart = (
         <span className={styles.cart}>
             <Link to="/cart">
