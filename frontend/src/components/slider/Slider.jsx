@@ -1,5 +1,5 @@
 import React from "react";
-
+import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import myPic from "../../assets/images/iphone-removebg-preview.png";
 import image1 from "../../assets/images/jackets-removebg-preview.png";
 import image2 from "../../assets/images/ladiescoats-removebg-preview.png";
@@ -15,11 +15,14 @@ import image9 from "../../assets/images/watch-removebg-preview.png";
 import React from 'react'
 
 const Slider = () => {
-  return (
-    <div className="slider">
-      
+
+    const prevSlide = () =>{};
+    const nextSlide = () =>{};
+
+  return <div className="slider">
+      <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
+      <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
     </div>
-  )
 }
 
 export default Slider
