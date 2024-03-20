@@ -68,7 +68,7 @@ header {
         color: orangered;
       }
       &.active {
-        color: var(--color-danger);
+        color: red;
       }
       p {
         position: absolute;
@@ -93,7 +93,7 @@ header {
         color: orangered;
       }
       &.active {
-        color: var(--color-danger);
+        color: red;
       }
     }
   }
@@ -111,7 +111,7 @@ header {
       left: 0;
       width: 50%;
       height: 100vh;
-      background-color: var(--dark-blue);
+      background-color: gray;
       padding: 1rem;
       z-index: 999;
       transform: translateX(-200%);
