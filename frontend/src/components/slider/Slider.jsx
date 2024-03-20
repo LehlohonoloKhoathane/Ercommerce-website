@@ -11,8 +11,61 @@ import image7 from "../../assets/images/sweater-removebg-preview.png";
 import image8 from "../../assets/images/underArmourCap-removebg-preview.png";
 import image9 from "../../assets/images/watch-removebg-preview.png";
 
+const sliderData = [
+    {
+        img: image8,
+        heading: `Node.Js`,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        img: image2,
+        name: `Git`,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        name: `Vs Code`,
+        img: image6,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        name: `Flutter`,
+        img: myPic,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        name: `TailWind`,
+        img: image7,
+        disc: `up to 30% of on all onsale products.`
+    },
+    
+    {
+        name: `Django`,
+        img: image1,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        name: `Figma`,
+        img: image9,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        name: `JavaScript`,
+        img: image5,
+        disc: `up to 30% of on all onsale products.`
+    },
+   
+    {
+        name: `Html & CSS`,
+        img: image3,
+        disc: `up to 30% of on all onsale products.`
+    },
+    {
+        name: `C++`,
+        img: image4,
+        disc: `up to 30% of on all onsale products.`
+    }
+]
 
-import React from 'react'
 
 const Slider = () => {
 
@@ -22,6 +75,8 @@ const Slider = () => {
   return <div className="slider">
       <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
       <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
+
+      {sliderData.map((slide, index))}
     </div>
 }
 
