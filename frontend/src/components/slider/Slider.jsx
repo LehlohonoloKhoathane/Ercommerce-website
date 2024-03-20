@@ -23,45 +23,45 @@ const sliderData = [
         disc: `up to 30% of on all onsale products.`
     },
     {
-        name: `Vs Code`,
         img: image6,
+        name: `Vs Code`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        name: `Flutter`,
         img: myPic,
+        name: `Flutter`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        name: `TailWind`,
         img: image7,
+        name: `TailWind`,
         disc: `up to 30% of on all onsale products.`
     },
     
     {
-        name: `Django`,
         img: image1,
+        name: `Django`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        name: `Figma`,
         img: image9,
+        name: `Figma`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        name: `JavaScript`,
         img: image5,
+        name: `JavaScript`,
         disc: `up to 30% of on all onsale products.`
     },
    
     {
-        name: `Html & CSS`,
         img: image3,
+        name: `Html & CSS`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        name: `C++`,
         img: image4,
+        name: `C++`,
         disc: `up to 30% of on all onsale products.`
     }
 ]
@@ -76,7 +76,10 @@ const Slider = () => {
       <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
       <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
 
-      {sliderData.map((slide, index))}
+      {sliderData.map((slide, index) => {
+
+        const {image, heading, disc} = slide;
+      })}
     </div>
 }
 
