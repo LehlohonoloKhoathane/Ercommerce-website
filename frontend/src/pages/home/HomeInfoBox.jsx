@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaShippingFast } from "react-icons/fa";
 import { BsFillCreditCardFill } from "react-icons/bs"
-import {}
+import { BsClockHistory } from "react-icons/bs";
+import { BsCartCheck } from "react-icons/bs";
 
 const data = [
     {
@@ -27,11 +28,19 @@ const data = [
   ];
 
 const HomeInfoBox = () => {
-  return (
-    <div>
-      HomeInfoBox
-    </div>
-  )
+  return <div className='infoboxes --mb2'>
+    {data.map((item, index) => {
+        const {icon, heading, text} =item
+        return(
+            <div className='infobox' key={index}>
+                <div className='icon'>{icon}</div>
+                <div className='text'>
+                    <h4>{heading}</h4>
+                    <p className='--text-sm'>{text}</p></div>
+            </div>
+        )
+    })}
+  </div>
 }
 
 export default HomeInfoBox
