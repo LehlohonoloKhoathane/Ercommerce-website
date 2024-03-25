@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import myPic from "../../assets/images/iphone-removebg-preview.png";
 import image1 from "../../assets/images/jackets-removebg-preview.png";
@@ -40,28 +40,28 @@ const sliderData = [
     
     {
         img: image1,
-        name: `Django`,
+        heading: `Django`,
         disc: `up to 30% of on all onsale products.`
     },
     {
         img: image9,
-        name: `Figma`,
+        heading: `Figma`,
         disc: `up to 30% of on all onsale products.`
     },
     {
         img: image5,
-        name: `JavaScript`,
+        heading: `JavaScript`,
         disc: `up to 30% of on all onsale products.`
     },
    
     {
         img: image3,
-        name: `Html & CSS`,
+        heading: `Html & CSS`,
         disc: `up to 30% of on all onsale products.`
     },
     {
         img: image4,
-        name: `C++`,
+        heading: `C++`,
         disc: `up to 30% of on all onsale products.`
     }
 ]
@@ -69,6 +69,7 @@ const sliderData = [
 
 const Slider = () => {
 
+    const [currentSlide, setCurrentSlide] = useState(0);
     const prevSlide = () =>{};
     const nextSlide = () =>{};
 
@@ -79,6 +80,14 @@ const Slider = () => {
       {sliderData.map((slide, index) => {
 
         const {image, heading, disc} = slide;
+
+        return (
+            <div key={index} className={index === currentSlide ? "slide current" : "slide"}>
+                {index === currentSlide && (<>
+                    <img src={image} alt="slide" />
+                </>)}
+            </div>
+        )
       })}
     </div>
 }
