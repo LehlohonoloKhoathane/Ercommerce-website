@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
+import {useNavigate} from "react-router-dom";
 import myPic from "../../assets/images/iphone-removebg-preview.png";
 import image1 from "../../assets/images/jackets-removebg-preview.png";
 import image2 from "../../assets/images/ladiescoats-removebg-preview.png";
@@ -70,6 +71,7 @@ const sliderData = [
 const Slider = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
+    const navigate = useNavigate()
     const prevSlide = () =>{};
     const nextSlide = () =>{};
 
@@ -85,6 +87,18 @@ const Slider = () => {
             <div key={index} className={index === currentSlide ? "slide current" : "slide"}>
                 {index === currentSlide && (<>
                     <img src={image} alt="slide" />
+                    <div className="content">
+                        <span className="span1"></span>
+                        <span className="span2"></span>
+                        <span className="span3"></span>
+                        <span className="span4"></span>
+                        <h2>{heading}</h2>
+                        <p>{disc}</p>
+                        <hr />
+                        <button className="--btn --btn-primary" >
+                            Shop
+                        </button>
+                    </div>
                 </>)}
             </div>
         )
