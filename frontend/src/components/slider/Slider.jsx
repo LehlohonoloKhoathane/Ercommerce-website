@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import {useNavigate} from "react-router-dom";
+import "./Slider.scss";
 import myPic from "../../assets/images/iphone-removebg-preview.png";
 import image1 from "../../assets/images/jackets-removebg-preview.png";
 import image2 from "../../assets/images/ladiescoats-removebg-preview.png";
@@ -14,54 +15,54 @@ import image9 from "../../assets/images/watch-removebg-preview.png";
 
 const sliderData = [
     {
-        img: image8,
+        image: image8,
         heading: `Node.Js`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: image2,
+        image: image2,
         name: `Git`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: image6,
+        image: image6,
         name: `Vs Code`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: myPic,
+        image: myPic,
         name: `Flutter`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: image7,
+        image: image7,
         name: `TailWind`,
         disc: `up to 30% of on all onsale products.`
     },
     
     {
-        img: image1,
+        image: image1,
         heading: `Django`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: image9,
+        image: image9,
         heading: `Figma`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: image5,
+        image: image5,
         heading: `JavaScript`,
         disc: `up to 30% of on all onsale products.`
     },
    
     {
-        img: image3,
+        image: image3,
         heading: `Html & CSS`,
         disc: `up to 30% of on all onsale products.`
     },
     {
-        img: image4,
+        image: image4,
         heading: `C++`,
         disc: `up to 30% of on all onsale products.`
     }
@@ -71,9 +72,16 @@ const sliderData = [
 const Slider = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
-    const navigate = useNavigate()
+    const slideLength = sliderData.length;
+    const autoScroll = true;
+    let slideInterval;
+    const intervalTime = 5000;
+    const navigate = useNavigate();
+    const nextSlide = () =>{
+        setCurrentSlide(currentSlide === slideLength -1 ? 0 : currentSlide + 1)
+    };
     const prevSlide = () =>{};
-    const nextSlide = () =>{};
+    
 
   return <div className="slider">
       <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
@@ -95,8 +103,8 @@ const Slider = () => {
                         <h2>{heading}</h2>
                         <p>{disc}</p>
                         <hr />
-                        <button className="--btn --btn-primary" >
-                            Shop
+                        <button className="--btn --btn-primary" onClick={() => navigate("/shop")}>
+                            Shop Now
                         </button>
                     </div>
                 </>)}
