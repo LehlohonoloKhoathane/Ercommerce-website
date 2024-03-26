@@ -46,6 +46,12 @@ const Home = () => {
           <ProductCategry/>
         </div>
       </section>
+      <section>
+        <div className='container'>
+          <PageHeading heading={"Mobile Phones"} btnText={"Shop Now"}/>
+          <ProductCarousel products={productss}/>
+        </div>
+      </section>
     </>
   )
 };

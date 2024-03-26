@@ -42,7 +42,7 @@ const ProductCategory = () => {
     <div className="categories">
       {categories.map((cat) => {
         return (
-          <div key={cat.id}>
+          <div key={cat.id} className="--flex-center">
             <Category title={cat.title} image={cat.image} />
           </div>
         );
