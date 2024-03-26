@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { shortenText } from '../../utils';
 
-// eslint-disable-next-line react/prop-types
 const CarouselItem = ({ url, name, price, description }) => {
   return (
     <div className='carouselItem'>

@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { responsive } from './data';
 
-// eslint-disable-next-line react/prop-types
+
 const ProductCarousel = ({ products }) => {
   return (
     <div>
