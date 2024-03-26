@@ -16,6 +16,30 @@ const FooterLinks = () => {
             <a href="#home" className='btn btn-dark'> Make an Enquiry</a>
         </div>
       </section>
+      <section className='footer-section'>
+        <div className='footer-logo'>
+            <img src="" alt="logo" />
+        </div>
+        <div className='footer-menu'>
+            <p className='link-heading'>
+                Features
+            </p>
+            <ul className='nav-ul footer-links'>
+                <li>
+                    <a href="#home">Lnik Shortening</a>
+                </li>
+                <li>
+                    <a href="#home">Branded Links</a>
+                </li>
+                <li>
+                    <a href="#home">Analytics</a>
+                </li>
+                <li>
+                    <a href="#home">Blog</a>
+                </li>
+            </ul>
+        </div>
+      </section>
     </>
 
 }
