@@ -14,7 +14,7 @@ export default function CarouselItem({ url, name, price, description }) {
         <h4>{shortenText(name, 18)}</h4>
         <p className="--mb">{shortenText(description, 26)}</p>
       </Link>
-      <button className='--btn --btn-primary --btn-blick'> Add to Cart</button>
+      <button className='--btn --btn-primary --btn-block'> Add to Cart</button>
     </div>
   )
 }
