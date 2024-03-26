@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { shortenText } from '../../utils';
 
-const CarouselItem = ({ url, name, price, description }) => {
+export default function CarouselItem({ url, name, price, description }) {
+
   return (
     <div className='carouselItem'>
       <Link to="/product-details">
@@ -13,9 +14,9 @@ const CarouselItem = ({ url, name, price, description }) => {
         <h4>{shortenText(name, 18)}</h4>
         <p className="--mb">{shortenText(description, 26)}</p>
       </Link>
-      <button className='--btn --btn-primary'> Add to Cart</button>
+      <button className='--btn --btn-primary --btn-blick'> Add to Cart</button>
     </div>
   )
-};
+}
 
-export default CarouselItem
+// export default CarouselItem

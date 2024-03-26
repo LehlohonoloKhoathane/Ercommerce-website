@@ -1,12 +1,10 @@
 import React from 'react'
-import Slider from '../../components/slider/Slider'
-import './Home.scss'
+import Slider from '../../components/slider/Slider';
+import './Home.scss';
 import HomeInfoBox from './HomeInfoBox';
 import { productData } from '../../components/carousel/data';
-import { CarouselItem} from "../../components/carousel/CarouselItem"
-import Carousel from 'react-multi-carousel';
+import CarouselItem from "../../components/carousel/CarouselItem";
 import ProductCarousel from '../../components/carousel/Carousel';
-
 
 const PageHeading = ({heading, btnText}) => {
   return (
@@ -26,7 +24,7 @@ const Home = () => {
       <CarouselItem 
       name={item.name}
       url={item.imageurl}
-      pricre={item.price}
+      price={item.price}
       description={item.description}/>
     </div>
   ))
