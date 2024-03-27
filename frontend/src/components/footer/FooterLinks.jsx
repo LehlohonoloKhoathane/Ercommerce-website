@@ -17,27 +17,86 @@ const FooterLinks = () => {
         </div>
       </section>
       <section className='footer-section'>
-        <div className='footer-logo'>
-            <img src="" alt="logo" />
-        </div>
-        <div className='footer-menu'>
-            <p className='link-heading'>
-                Features
-            </p>
-            <ul className='nav-ul footer-links'>
-                <li>
-                    <a href="#home">Lnik Shortening</a>
-                </li>
-                <li>
-                    <a href="#home">Branded Links</a>
-                </li>
-                <li>
-                    <a href="#home">Analytics</a>
-                </li>
-                <li>
-                    <a href="#home">Blog</a>
-                </li>
-            </ul>
+        <div className='container footer'>
+            <div className='footer-logo'>
+                <img src="" alt="logo" />
+            </div>
+            <div className='footer-menu'>
+                <p className='link-heading'>
+                    Features
+                </p>
+                <ul className='nav-ul footer-links'>
+                    <li>
+                        <a href="#home">Lnik Shortening</a>
+                    </li>
+                    <li>
+                        <a href="#home">Branded Links</a>
+                    </li>
+                    <li>
+                        <a href="#home">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#home">Blog</a>
+                    </li>
+                </ul>
+            </div>
+            <div className='footer-menu'>
+                <p className='link-heading'>
+                    Resources
+                </p>
+                <ul className='nav-ul footer-links'>
+                    <li>
+                        <a href="#home">Lnik Shortening</a>
+                    </li>
+                    <li>
+                        <a href="#home">Branded Links</a>
+                    </li>
+                    <li>
+                        <a href="#home">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#home">Blog</a>
+                    </li>
+                </ul>
+            </div>
+            <div className='footer-menu'>
+                <p className='link-heading'>
+                    Company
+                </p>
+                <ul className='nav-ul footer-links'>
+                    <li>
+                        <a href="#home">Lnik Shortening</a>
+                    </li>
+                    <li>
+                        <a href="#home">Branded Links</a>
+                    </li>
+                    <li>
+                        <a href="#home">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#home">Blog</a>
+                    </li>
+                </ul>
+            </div>
+            <div className='footer-menu'>
+                <p className='link-heading'>
+                    Partners
+                </p>
+                <ul className='nav-ul footer-links'>
+                    <li>
+                        <a href="#home">Lnik Shortening</a>
+                    </li>
+                    <li>
+                        <a href="#home">Branded Links</a>
+                    </li>
+                    <li>
+                        <a href="#home">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#home">Blog</a>
+                    </li>
+                </ul>
+            </div>
         </div>
       </section>
     </>
