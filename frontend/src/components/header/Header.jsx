@@ -23,6 +23,16 @@ const Header = () => {
 
     // State to toggle the mobile menu
     const [showMenu, setShowMenu] = useState(false);
+    const [scrollPage, setScrollPage] = useState(false);
+
+    const fixedNavBar = () => {
+        if(window.scrollY > 50) {
+            setScrollPage(true)
+        }else{
+            setScrollPage(false)
+        }
+    };
+    window.addEventListener("scroll", fixedNavBar);
 
     // Function to toggle the mobile menu
     const toggleMenu = () => {
@@ -45,7 +55,7 @@ const Header = () => {
     );
 
   return (
-  <header>
+  <header className={scrollPage ? `${styles.fixed}` : null}>
     <div className={styles.header}>{logo}
     <nav className={showMenu ? `${styles["show-nav"]}` : `${styles["hide-menu"]}`}>
         <div className={showMenu ? `${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}` :
