@@ -9,7 +9,7 @@ const app = express()
 
 //Routes
 app.get("/", (req, res) => {
-    res.send("Home Page...")
+    res.send("Home Page..."
 })
 
 const PORT = process.env.PORT || 5000
