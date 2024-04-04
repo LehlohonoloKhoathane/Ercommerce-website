@@ -37,6 +37,13 @@ const userSchema = mongoose.Schema(
         phone: {
             type: String,
             default: "+27",
+        },
+        address: {
+            type: Object,
+            //address, state, country
         }
     }
 )
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;
