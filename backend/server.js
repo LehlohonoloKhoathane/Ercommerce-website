@@ -6,10 +6,16 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middlewares
+app.use(
+    cors({
+        origin: ["https:///localhost:3000", "https://studious-bassoon-4j7q54q6rvpqc7954.github.dev/"],
+        credentials: true,
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: false}));
 
 // Routes
 app.get("/", (req, res) => {
@@ -18,10 +24,7 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("Connected to MongoDB");
     app.listen(PORT, () => {
