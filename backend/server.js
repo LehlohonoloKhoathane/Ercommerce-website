@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const userRoute = require("./routes/userRoute")
 
 const app = express();
 
@@ -18,9 +19,15 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false}));
 
 // Routes
+app.use("/api/users", userRoute);
+
 app.get("/", (req, res) => {
     res.send("Home Page...");
 });
+
+module.exports = {
+    registerUser,
+}
 
 const PORT = process.env.PORT || 5000;
 
