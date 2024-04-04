@@ -23,5 +23,20 @@ const userSchema = mongoose.Schema(
             minLength: [6, "Password must be up to 6 characters"],
             //maxLength: [23, "Password must not be more than 23 characters"],
         },
+        role: {
+            type: String,
+            required: [true],
+            default: "customer",
+            enum: ["customer", "admin"],
+        },
+        photo: {
+            type: String,
+            required: [true, "Please add a photo"],
+            default: "https://www.hiclipart.com/free-transparent-background-png-clipart-pfudy",
+        },
+        phone: {
+            type: String,
+            default: "+27",
+        }
     }
 )
