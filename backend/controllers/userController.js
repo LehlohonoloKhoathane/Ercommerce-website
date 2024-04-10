@@ -36,6 +36,28 @@ const registerUser = asyncHandler(async (req, res) => {
         email,
         password
     })
+
+    //Generate Token
+    const token = generateToken(user._id)
+
+    if (user) {
+        const { _id, name, email, role } = user;
+        res.cookie("token", token, {
+            path: "/",
+            httpOnly: true,
+            expires: new Date(Date.now() + 1000 * 86400),
+            secure: true,
+            sameSite: "none"
+        })
+        //Send user data
+        res.status(201).json({
+            _id, name, email, role, token
+        })
+
+    } else {
+        res.status(400);
+        throw new Error("Invalid user data")
+    }
     
     res.send("Register User...")
 });
