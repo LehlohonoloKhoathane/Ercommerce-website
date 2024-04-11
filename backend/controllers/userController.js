@@ -35,7 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
         name, 
         email,
         password
-    })
+    });
 
     //Generate Token
     const token = generateToken(user._id)
@@ -48,11 +48,11 @@ const registerUser = asyncHandler(async (req, res) => {
             expires: new Date(Date.now() + 1000 * 86400),
             secure: true,
             sameSite: "none"
-        })
+        });
         //Send user data
         res.status(201).json({
-            _id, name, email, role, token
-        })
+            _id, name, email, role, token,
+        });
 
     } else {
         res.status(400);

@@ -1,3 +1,5 @@
+const { hash } = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
@@ -43,7 +45,19 @@ const userSchema = mongoose.Schema(
             //address, state, country
         }
     }
-)
+);
+
+//Encrypt password before saving to Database
+userSchema.pre("save", async function(next){
+    if (!this.isModified("password")){
+        return next
+    }
+    // Hashing the password
+    const salt = await bcrypt.getSalt(10);
+    const hashedPassword = bcrypt.hash(this.password, salt);
+    this.password = hashedPassword;
+    next()
+})
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
