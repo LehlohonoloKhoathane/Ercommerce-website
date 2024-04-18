@@ -70,7 +70,7 @@ const loginUser = asyncHandler(async (req, res) => {
     // Validate Request
     if (!email || !password) {
         res.status(400);
-        throw new Error("Please add email and password");
+        throw new Error("Please add email or password");
     }
     // Check if user exists
     const user = await User.findOne({ email });
@@ -85,7 +85,7 @@ const loginUser = asyncHandler(async (req, res) => {
     // Generate Token
     const token = generateToken(user._id);
     if ( user && passwordIsCorrect){
-        const newUser = await User.findOne({ email }).select("password");
+        const newUser = await User.findOne({ email }).select("-password");
         res.cookie("token", token, {
             path: "/",
             httpOnly: true,
@@ -100,10 +100,23 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new Error("Invalid email or password")
     }
 
-    res.send("Login User...")
+    //res.send("Login User...")
 });
+
+// logout user
+const logout = asyncHandler (async (req, res) => {
+    res.cookie("token", "", {
+        path: "/",
+        httpOnly: true,
+        expires: new Date(0),
+        //secure: true,
+        //sametime: none,
+    });
+    res.status(200).json({message: "Successfully Logged Out"})
+})
 
 module.exports = {
     registerUser,
     loginUser,
+    logout
 };
