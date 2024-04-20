@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 const { use } = require("../routes/userRoute");
+const User = require("../models/userModel");
 
 const generateToken = () => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -141,10 +142,28 @@ const getLoginStatus = asyncHandler (async (req, res) => {
     }
 });
 
+// Update User
+const updateUser = asyncHandler (async (req, res) => {
+    const User = await User.findById(req.user._id);
+    if(user){
+        const { name, phone, address } = user;
+        user.name = req.body.name || name;
+        user.phone = req.body.phone || phone;
+        user.address = req.body.address || address;
+
+        const updateUser = await user.save()
+        res.status(200).json(updateUser);
+    } else {
+        res.status(404);
+        throw new Error("User not found")
+    }
+});
+
 module.exports = {
     registerUser,
     loginUser,
     logout,
     getUser,
-    getLoginStatus
+    getLoginStatus,
+    updateUser
 };
