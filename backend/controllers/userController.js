@@ -151,12 +151,22 @@ const updateUser = asyncHandler (async (req, res) => {
         user.phone = req.body.phone || phone;
         user.address = req.body.address || address;
 
-        const updateUser = await user.save()
-        res.status(200).json(updateUser);
+        const updatedUser = await user.save()
+        res.status(200).json(updatedUser);
     } else {
         res.status(404);
         throw new Error("User not found")
     }
+});
+
+//update photo
+
+const updatePhoto = asyncHandler (async (req, res) => {
+    const { photo } = req.body;
+    const user = await User.findById(req.user._id);
+    user.photo = photo;
+    const updatedUser = await user.save();
+    res.status(200).json(updatedUser);
 });
 
 module.exports = {
@@ -165,5 +175,6 @@ module.exports = {
     logout,
     getUser,
     getLoginStatus,
-    updateUser
+    updateUser,
+    updatePhoto
 };
