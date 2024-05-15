@@ -26,9 +26,9 @@ app.get("/", (req, res) => {
     res.send("Home Page...");
 });
 
-module.exports = {
-    registerUser,
-}
+// module.exports = {
+//     registerUser,
+// }
 
 //Error Middleware 
 app.use(errorHandler);
