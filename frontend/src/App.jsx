@@ -7,10 +7,11 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Login from './pages/home/auth/Login';
 import Register from './pages/home/auth/register';
+import axios from 'axios';
 
 function App() {
   // const [count, setCount] = useState(0)
-
+  axios.defaults.withCredentials = true
   return (
     <>
       <BrowserRouter>
