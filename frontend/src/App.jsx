@@ -8,6 +8,8 @@ import Footer from './components/footer/Footer';
 import Login from './pages/home/auth/Login';
 import Register from './pages/home/auth/register';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -15,6 +17,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ToastContainer/>
       <Header/>
         <Routes>
           <Route path='/' element={<Home/>}/>
