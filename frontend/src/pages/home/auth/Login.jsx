@@ -40,7 +40,7 @@ const Login = () => {
                         </button>
                     </form>
                     <span className={styles.register}>
-                        <p>Don't Have an account?</p> <Link to="/register"> Register </Link>
+                        <p>Do not Have an account?</p> <Link to="/register"> Register </Link>
                     </span>
                 </div>
             </Card>
