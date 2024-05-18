@@ -3,6 +3,8 @@ import styles from "./auth.module.scss";
 import loginImg from "../../../assets/images/logiin.png"
 import Card from "../../../components/card/Card";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { validateEmail } from "../../../utils";
 
 const initialState = {
     name: "",
@@ -20,7 +22,22 @@ const Register = () => {
         setFormData({...formData, [name]: value })
     };
 
-    const registerUser = () => {};
+    const registerUser = (e) => {
+        e.preventDefault();
+        //console.log(name, email, password, cPassword);
+        if(!email || !password){
+            return toast.error("All fields are required!");
+        }
+        if(password.length < 6){
+            return toast.error("Password must be up to 6 characters");
+        }
+        if(!validateEmail(email)){
+            return toast.error("Please enter a valid email");
+        }
+        if(password !== cPassword){
+            return toast.error("Password do not match");
+        }
+    };
 
     return <section className={`container ${styles.auth}`}>
        
@@ -38,14 +55,14 @@ const Register = () => {
                     <input type="text" 
                     placeholder="Email" 
                     required 
-                    name={email}
+                    name="email"
                     value={email} 
                     onChange={handleInputChange} />
 
                     <input type="password"
                     placeholder="Password"
                     required
-                    name={password}
+                    name="password"
                     value={password}
                     onChange={handleInputChange} />
 
