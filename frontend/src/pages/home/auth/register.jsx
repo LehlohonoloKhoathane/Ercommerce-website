@@ -5,6 +5,8 @@ import Card from "../../../components/card/Card";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { validateEmail } from "../../../utils";
+import { useDispatch } from "react-redux";
+import { register } from "../../../redux/features/auth/authSlice";
 
 const initialState = {
     name: "",
@@ -16,13 +18,14 @@ const initialState = {
 const Register = () => {
     const [formData, setFormData] = useState(initialState);
     const { name, email, password, cPassword } = formData;
+    const dispatch = useDispatch();
 
     const handleInputChange = (e) => {
         const {name, value } = e.target
         setFormData({...formData, [name]: value })
     };
 
-    const registerUser = (e) => {
+    const registerUser = async (e) => {
         e.preventDefault();
         //console.log(name, email, password, cPassword);
         if(!email || !password){
@@ -37,6 +40,13 @@ const Register = () => {
         if(password !== cPassword){
             return toast.error("Password do not match");
         }
+        const userData = {
+            name,
+            email,
+            password
+        }
+
+        await dispatch(register(userData));
     };
 
     return <section className={`container ${styles.auth}`}>

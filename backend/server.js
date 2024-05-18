@@ -11,7 +11,7 @@ const app = express();
 // Middlewares
 app.use(
     cors({
-        origin: ["https:///localhost:3000", "https://studious-bassoon-4j7q54q6rvpqc7954.github.dev/"],
+        origin: ["https://localhost:3000", "https://studious-bassoon-4j7q54q6rvpqc7954.github.dev"],
         credentials: true,
     })
 );
