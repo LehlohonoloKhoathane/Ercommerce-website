@@ -5,8 +5,9 @@ import Card from "../../../components/card/Card";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { validateEmail } from "../../../utils";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../redux/features/auth/authSlice";
+import Loader from "../../../components/loader/Loader";
 
 const initialState = {
     name: "",
@@ -19,6 +20,7 @@ const Register = () => {
     const [formData, setFormData] = useState(initialState);
     const { name, email, password, cPassword } = formData;
     const dispatch = useDispatch();
+    const {isLoading, isLoggedIn, isSuccess} = useSelector((state) => state.auth);
 
     const handleInputChange = (e) => {
         const {name, value } = e.target
@@ -49,7 +51,9 @@ const Register = () => {
         await dispatch(register(userData));
     };
 
-    return <section className={`container ${styles.auth}`}>
+    return <>
+    {isLoading && <Loader/>}
+    <section className={`container ${styles.auth}`}>
        
         <Card>
             <div className={styles.form}>
@@ -97,6 +101,7 @@ const Register = () => {
             <img src={loginImg} alt="Login" width="400" />
         </div>
     </section>;
+    </>
 };
 
 export default  Register;
