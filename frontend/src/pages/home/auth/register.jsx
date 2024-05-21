@@ -58,7 +58,7 @@ const Register = () => {
         }
 
         dispatch(RESET_AUTH())
-    }, [isSuccess, isLoggedIn, dispatch, navigate])
+    }, [isSuccess, isLoggedIn, dispatch, navigate]);
 
     return <>
     {isLoading && <Loader/>}
