@@ -4,7 +4,9 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CgMenuGridR } from "react-icons/cg";
 import { FaTimes } from "react-icons/fa";
 import styles from './Header.module.scss';     // Importing styles from a SCSS module
-import { Link, NavLink } from 'react-router-dom';    // Importing Link and NavLink components from react-router-dom
+import { Link, NavLink, useNavigate } from 'react-router-dom';    // Importing Link and NavLink components from react-router-dom
+import { useDispatch } from 'react-redux';
+import { RESET_AUTH, logout } from '../../redux/features/auth/authSlice';
 
 // Define a logo component
 export const logo = (
@@ -24,6 +26,8 @@ const Header = () => {
     // State to toggle the mobile menu
     const [showMenu, setShowMenu] = useState(false);
     const [scrollPage, setScrollPage] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const fixedNavBar = () => {
         if(window.scrollY > 50) {
@@ -43,6 +47,12 @@ const Header = () => {
     const hideMenu = () => {
         setShowMenu(false)
     };
+
+    const logoutUser = async () => {
+        await dispatch(logout());
+        await dispatch(RESET_AUTH());
+        navigate("/login");
+    }
 
     // Cart component
     const cart = (
@@ -82,6 +92,9 @@ const Header = () => {
                 <NavLink to={"order-history"} className={activeLink}>
                     My Order
                 </NavLink>
+                <Link to={"/"} onClick={logoutUser}>
+                    Logout
+                </Link>
             </span>
             {cart}
         </div>
