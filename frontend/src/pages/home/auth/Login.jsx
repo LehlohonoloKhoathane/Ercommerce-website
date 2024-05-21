@@ -3,13 +3,28 @@ import styles from "./auth.module.scss"; // Check if the import path is correct
 import loginImg from "../../../assets/images/logiin.png";
 import Card from "../../../components/card/Card";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { validateEmail } from "../../../utils";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const loginUser = (e) => {
         e.preventDefault(); // Prevent form submission
-        // Add your login logic here
+        //console.log(name, email, password, cPassword);
+        if(!email || !password){
+            return toast.error("All fields are required!");
+        }
+        if(!validateEmail(email)){
+            return toast.error("Please enter a valid email");
+        }
+
+        const userData = {
+            email,
+            password
+        }
+        console.log(userData);
+        //await dispatch(register(userData));
     };
 
     return (
