@@ -7,6 +7,7 @@ import styles from './Header.module.scss';     // Importing styles from a SCSS m
 import { Link, NavLink, useNavigate } from 'react-router-dom';    // Importing Link and NavLink components from react-router-dom
 import { useDispatch } from 'react-redux';
 import { RESET_AUTH, logout } from '../../redux/features/auth/authSlice';
+import ShowOnLogin, { ShowOnLogout } from '../hiddenLink/hiddenLink';
 
 // Define a logo component
 export const logo = (
@@ -52,7 +53,7 @@ const Header = () => {
         await dispatch(logout());
         await dispatch(RESET_AUTH());
         navigate("/login");
-    }
+    };
 
     // Cart component
     const cart = (
@@ -83,18 +84,26 @@ const Header = () => {
         </ul>
         <div className={styles["header-right"]}>
             <span className={styles.links}>
+                <ShowOnLogout>
                 <NavLink to={"login"} className={activeLink}>
                     Login
                 </NavLink>
+                </ShowOnLogout>
+                <ShowOnLogout>
                 <NavLink to={"register"} className={activeLink}>
                     Register
                 </NavLink>
+                </ShowOnLogout>
+                <ShowOnLogin>
                 <NavLink to={"order-history"} className={activeLink}>
                     My Order
                 </NavLink>
+                </ShowOnLogin>
+                <ShowOnLogin>
                 <Link to={"/"} onClick={logoutUser}>
                     Logout
                 </Link>
+                </ShowOnLogin>
             </span>
             {cart}
         </div>
