@@ -84,6 +84,59 @@ export const getLoginStatus = createAsyncThunk(
 );
 
 
+//get User
+export const getUser = createAsyncThunk(
+    "auth/getUser",
+    async (_, thunkAPI) => {
+        try {
+            return await authService.getUser();
+        } catch (error) {
+            const message = 
+            (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+                error.message ||
+                error.toString();
+                return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+//update User profile
+export const updateUser = createAsyncThunk(
+    "auth/updateUser",
+    async (userData, thunkAPI) => {
+        try {
+            return await authService.updateUser(userData);
+        } catch (error) {
+            const message = 
+            (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+                error.message ||
+                error.toString();
+                return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+//update photo
+export const updatePhoto = createAsyncThunk(
+    "auth/updatePhoto",
+    async (userData, thunkAPI) => {
+        try {
+            return await authService.updatePhoto(userData);
+        } catch (error) {
+            const message = 
+            (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+                error.message ||
+                error.toString();
+                return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
 
 const authSlice = createSlice({
     name: "auth",
@@ -174,6 +227,65 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
+            //state.user = null;
+        })
+
+        //getUser
+        .addCase(getUser.pending, (state) =>{
+            state.isLoading = true;
+        })
+        .addCase(getUser.fulfilled, (state, action) =>{
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.isLoggedIn = true;
+            state.user = action.payload;
+            console.log(action.payload);
+        })
+        .addCase(getUser.rejected, (state, action) =>{
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+            toast.error(action.payload);
+            //state.user = null;
+        })
+
+        //update user profile
+        .addCase(updateUser.pending, (state) =>{
+            state.isLoading = true;
+        })
+        .addCase(updateUser.fulfilled, (state, action) =>{
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.isLoggedIn = true;
+            state.user = action.payload;
+            toast.success("User updated successfully.");
+            console.log(action.payload);
+        })
+        .addCase(updateUser.rejected, (state, action) =>{
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+            toast.error(action.payload);
+            //state.user = null;
+        })
+
+        //update photo
+        .addCase(updatePhoto.pending, (state) =>{
+            state.isLoading = true;
+        })
+        .addCase(updatePhoto.fulfilled, (state, action) =>{
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.isLoggedIn = true;
+            state.user = action.payload;
+            toast.success("Photo updated successfully.");
+            console.log(action.payload);
+        })
+        .addCase(updatePhoto.rejected, (state, action) =>{
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+            toast.error(action.payload);
             //state.user = null;
         });
     }
