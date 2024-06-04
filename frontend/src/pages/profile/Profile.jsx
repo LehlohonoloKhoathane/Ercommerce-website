@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.scss";
 import PageMenu from "../../components/pageMenu/PageMenu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/card/Card"
+import { getUser } from "../../redux/features/auth/authSlice";
 
 
 const Profile = () => {
@@ -18,11 +19,33 @@ const Profile = () => {
     };
 
     const [profile, setProfile] = useState(initialState);
-    
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (user === null){
+            dispatch(getUser());
+        }
+    }, [dispatch, user]);
+
+    useEffect(() => {
+        if (user){
+            setProfile({
+                name: user?.name || "",
+                email: user?.email || "",
+                phone: user?.phone || "",
+                role: user?.role || "",
+                address: user?.address || {},
+            });
+        }
+    }, [dispatch, user]);
+
 
     const saveProfile = async () => {};
     const handleImageChange = async () => {};
-    const handleInputChange = async () => {};
+    const handleInputChange = (e) => {
+        const {name, value } = e.target
+        setProfile({...profile, [name]: value })
+    };
 
     return (
         <>
