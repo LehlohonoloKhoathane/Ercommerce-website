@@ -39,8 +39,20 @@ const Profile = () => {
         }
     }, [dispatch, user]);
 
+    const saveProfile = async (e) => {
+        e.preventDefault()
 
-    const saveProfile = async () => {};
+        const userData = {
+            name: profile.name,
+            phone: profile.phone,
+            address: {
+                address: profile.address,
+                state: profile.state,
+                country: profile.country,
+            }
+        }
+    };
+
     const handleImageChange = async () => {};
     const handleInputChange = (e) => {
         const {name, value } = e.target
@@ -75,7 +87,8 @@ const Profile = () => {
                                         type="text"
                                         name="name"
                                         value={profile?.name}
-                                        onChange={handleInputChange} 
+                                        onChange={handleInputChange}
+                                        required 
                                         />
                                     </p>
                                     <p>
@@ -95,6 +108,7 @@ const Profile = () => {
                                         name="phone"
                                         value={profile?.phone}
                                         onChange={handleInputChange} 
+                                        required
                                         />
                                     </p>
                                     <p>
@@ -103,7 +117,8 @@ const Profile = () => {
                                         type="text"
                                         name="address"
                                         value={profile?.address?.address}
-                                        onChange={handleInputChange} 
+                                        onChange={handleInputChange}
+                                        required 
                                         />
                                     </p>
                                     <p>
