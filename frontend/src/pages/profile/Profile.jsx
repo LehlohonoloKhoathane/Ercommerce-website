@@ -3,7 +3,8 @@ import "./Profile.scss";
 import PageMenu from "../../components/pageMenu/PageMenu";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/card/Card"
-import { getUser } from "../../redux/features/auth/authSlice";
+import { getUser, updateUser } from "../../redux/features/auth/authSlice";
+import { WiCloudUp } from "react-icons/wi";
 
 
 const Profile = () => {
@@ -19,6 +20,8 @@ const Profile = () => {
     };
 
     const [profile, setProfile] = useState(initialState);
+    const [profileImage, setProfileImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -39,6 +42,16 @@ const Profile = () => {
         }
     }, [dispatch, user]);
 
+    const handleInputChange = (e) => {
+        const {name, value } = e.target
+        setProfile({...profile, [name]: value })
+    };
+
+    const handleImageChange = (e) => {
+        setProfileImage(e.target.files[0]);
+        setImagePreview(URL.createObjectURL(e.target.files[0]));
+    };
+
     const saveProfile = async (e) => {
         e.preventDefault()
 
@@ -49,19 +62,18 @@ const Profile = () => {
                 address: profile.address,
                 state: profile.state,
                 country: profile.country,
-            }
-        }
+            },
+        };
+        await dispatch(updateUser(userData));
     };
 
-    const handleImageChange = async () => {};
-    const handleInputChange = (e) => {
-        const {name, value } = e.target
-        setProfile({...profile, [name]: value })
-    };
+    const savePhoto = async () => {};
+
 
     return (
         <>
         <section>
+            {/*{isLoading && <Loader/>}*/}
             <div className="container">
                 <PageMenu/>
                 <h2>Profile</h2>
@@ -70,7 +82,15 @@ const Profile = () => {
                         {!isLoading   && (
                             <>
                                 <div className="profile-photo">
-                                    <h2>Profile Image</h2>
+                                    <div>
+                                        <img src={imagePreview === null ? user?.photo : imagePreview} alt="Profile" />
+                                        <h3>Role: {Profile.role}</h3>
+                                        {imagePreview !== null && (
+                                            <button className="--btn --btn-secondary" onClick={savePhoto}>
+                                                <WiCloudUp size={18}/> Upload Photo
+                                            </button>
+                                        )}
+                                    </div>
                                 </div>
                                 <form onSubmit={saveProfile}>
                                     <p>
