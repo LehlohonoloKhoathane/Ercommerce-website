@@ -16,7 +16,12 @@ const Profile = () => {
         email: user?.email || "",
         phone: user?.phone || "",
         role: user?.role || "",
-        address: user?.address || {},
+        photo: user?.photo || "",
+        address: user?.address || {
+            address: user?.address?.address || "",
+            state: user?.address?.state || "",
+            country: user?.address?.country || "",
+        },
     };
 
     const [profile, setProfile] = useState(initialState);
@@ -37,7 +42,12 @@ const Profile = () => {
                 email: user?.email || "",
                 phone: user?.phone || "",
                 role: user?.role || "",
-                address: user?.address || {},
+                photo: user?.photo || "",
+                address: user?.address || {
+                    address: user?.address?.address || "",
+                    state: user?.address?.state || "",
+                    country: user?.address?.country || "",
+                },
             });
         }
     }, [dispatch, user]);
@@ -86,9 +96,11 @@ const Profile = () => {
                                         <img src={imagePreview === null ? user?.photo : imagePreview} alt="Profile" />
                                         <h3>Role: {Profile.role}</h3>
                                         {imagePreview !== null && (
-                                            <button className="--btn --btn-secondary" onClick={savePhoto}>
-                                                <WiCloudUp size={18}/> Upload Photo
-                                            </button>
+                                            <div className="--center-all">
+                                                <button className="--btn --btn-secondary" onClick={savePhoto}>
+                                                    <WiCloudUp size={18}/> Upload Photo
+                                                </button>
+                                            </div>
                                         )}
                                     </div>
                                 </div>
