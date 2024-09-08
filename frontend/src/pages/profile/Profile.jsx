@@ -6,6 +6,7 @@ import Card from "../../components/card/Card"
 import { getUser, updatePhoto, updateUser } from "../../redux/features/auth/authSlice";
 import { WiCloudUp } from "react-icons/wi";
 import { toast } from "react-toastify";
+import { shortenText } from "../../utils";
 
 const cloud_name = process.env.REACT_APP_CLOUD_NAME;
 const upload_preset = process.env.REACT_APP_UPLOAD_PRESET;
@@ -103,7 +104,7 @@ const Profile = () => {
 
             //Saving image to mongoDB
             const userData = {
-                photo: profileImage ? imageURL : profile.photo
+                photo: profileImage ? imageURL : profile.photo,
             }
             await dispatch(updatePhoto(userData));
             setImagePreview(null)
@@ -217,6 +218,13 @@ const Profile = () => {
         </section>
         </>
     );
+};
+
+export const UserName = () => {
+    const { user } = useSelector((state) => state.auth);
+    const username = user?.name || "...";
+
+    return <span style={{color: "#ff7722"}}> Hi, {shortenText(username, 9) } | </span>;
 };
 
 export default Profile;

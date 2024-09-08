@@ -1,6 +1,6 @@
 // Importing necessary modules
 import React, {useState} from 'react';
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { CgMenuGridR } from "react-icons/cg";
 import { FaTimes } from "react-icons/fa";
 import styles from './Header.module.scss';     // Importing styles from a SCSS module
@@ -8,6 +8,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';    // Importing L
 import { useDispatch } from 'react-redux';
 import { RESET_AUTH, logout } from '../../redux/features/auth/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../hiddenLink/hiddenLink';
+import { UserName } from '../../pages/profile/Profile';
 
 // Define a logo component
 export const logo = (
@@ -84,6 +85,12 @@ const Header = () => {
         </ul>
         <div className={styles["header-right"]}>
             <span className={styles.links}>
+                <ShowOnLogin>
+                <NavLink to={"login"} className={activeLink}>
+                    <FaUserCircle size={16} color="#ff7722" />
+                    <UserName/>
+                </NavLink>
+                </ShowOnLogin>
                 <ShowOnLogout>
                 <NavLink to={"login"} className={activeLink}>
                     Login
