@@ -22,7 +22,7 @@ const Profile = () => {
         phone: user?.phone || "",
         role: user?.role || "",
         photo: user?.photo || "",
-        address: user?.address || {
+        address: {
             address: user?.address?.address || "",
             state: user?.address?.state || "",
             country: user?.address?.country || "",
@@ -48,7 +48,7 @@ const Profile = () => {
                 phone: user?.phone || "",
                 role: user?.role || "",
                 photo: user?.photo || "",
-                address: user?.address || {
+                address: {
                     address: user?.address?.address || "",
                     state: user?.address?.state || "",
                     country: user?.address?.country || "",
