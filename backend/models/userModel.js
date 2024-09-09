@@ -43,7 +43,10 @@ const userSchema = mongoose.Schema(
         address: {
             type: Object,
             //address, state, country
-        }
+        },
+    },
+    {
+        timestamps: true,
     }
 );
 
